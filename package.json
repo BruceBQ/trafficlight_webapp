@@ -35,7 +35,7 @@
     "react-perfect-scrollbar": "^1.5.3",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^3.4.3",
     "react-select": "^2.4.4",
     "react-swipeable-views": "^0.13.3",
     "react-transition-group": "^2.9.0",

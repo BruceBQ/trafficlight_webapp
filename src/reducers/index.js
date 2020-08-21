@@ -19,6 +19,8 @@ import flowReducer from './reducer_flow'
 import trafficControlReducer from './reducer_trafficControl'
 import lightPeriodReducer from './reducer_lightPeriod'
 import waitTimeReducer from './reducer_waitTime'
+// import dataZone from './draw_zone'
+import drawZones from './draw_zones'
 
 const reducer_root = combineReducers({
   user: reducer_user,
@@ -40,8 +42,9 @@ const reducer_root = combineReducers({
   flow: flowReducer,
   trafficControl: trafficControlReducer,
   lightPeriod: lightPeriodReducer,
-  waitTime: waitTimeReducer
-
+  waitTime: waitTimeReducer,
+  // dataZone,
+  drawZones,
 })
 
 export default reducer_root

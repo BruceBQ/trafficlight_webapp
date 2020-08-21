@@ -515,3 +515,32 @@ export function ChartDataViaType(props) {
     />
   )
 }
+
+export function ZoneControl(props) {
+  const value = props.getValue()
+  return (
+    <TextField
+      variant="outlined"
+      fullWidth
+      value={isEmpty(value) ? '' : 'have value'}
+      label="Vùng nhận dạng"
+      error={props.selectProps.error}
+      helperText={props.selectProps.helperText}
+      InputProps={{
+        inputComponent,
+        inputProps: {
+          className: props.selectProps.classes.input,
+          inputRef: props.innerRef,
+          children: props.children,
+          ...props.innerProps,
+        },
+      }}
+      InputLabelProps={{
+        classes: {
+          root: props.selectProps.classes.inputLabel,
+        },
+      }}
+      {...props.selectProps.textFieldProps}
+    />
+  )
+}

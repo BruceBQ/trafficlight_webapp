@@ -4,11 +4,13 @@ import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { configCamFunctions, backStep } from 'actions/action_camera'
+import { resetZonesDrew } from 'actions/draw_zones/action_draw'
 import Record from './Record'
 import Surveillance from './Surveillance'
 import Stream from './Stream'
 import ALPR from './ALPR'
 import omit from 'lodash/omit'
+import _ from 'lodash'
 
 const styles = theme => ({
   root: {
@@ -42,7 +44,35 @@ class Function extends Component {
   }
 
   handleSubmit = event => {
-    this.props.configCamFunctions(omit(this.props.addCamera, ['activeStep']))
+    let { addCamera, zoneOptions, dimension } = this.props
+    let zoneDrew = []
+    zoneOptions.map(data => {
+      let zone = {}
+      if(data.vertices.length) {
+           zone = {
+            vertices: data.vertices,
+            id: data.id,
+            type: data.type
+          }
+
+          if(data.arrow) {
+            if(data.arrow.length) {
+              zone.arrow = data.arrow
+            }else {
+              zone.arrow = []
+            }
+          }
+
+          zoneDrew.push(zone)
+
+      }
+    })
+
+    addCamera.zones = zoneDrew
+    addCamera.dimension = dimension
+
+    this.props.resetZonesDrew()
+    this.props.configCamFunctions(omit(addCamera, ['activeStep']))
   }
 
   handleBackStep = event => {
@@ -86,11 +116,14 @@ class Function extends Component {
   }
 }
 
-const mapStateToProps = ({ cameras }) => ({
-  addCamera: cameras.addCamera,
+const mapStateToProps = (state) => ({
+  addCamera: state.cameras.addCamera,
+  zoneOptions: state.drawZones.zoneOptions,
+  dimension: state.drawZones.dimension
 })
 
 export default connect(mapStateToProps, {
   backStep,
   configCamFunctions,
+  resetZonesDrew
 })(withStyles(styles)(Function))
