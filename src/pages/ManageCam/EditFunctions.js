@@ -51,7 +51,25 @@ class EditFunctions extends Component {
   }
 
   handleSubmit = values => {
-    const { focusedCam } = this.props
+    const { focusedCam, zoneOptions } = this.props
+
+    let zonesDrew = zoneOptions.filter(data => data.vertices.length)
+    let zones = []
+    if(zonesDrew.length) {
+      zonesDrew.map(zone => {
+        let newZone = {}
+        newZone.id = zone.id
+        newZone.type = zone.type
+        newZone.vertices = zone.vertices
+
+        if(zone.arrow) {
+          newZone.arrow = zone.arrow
+        }
+        zones.push(newZone)
+      })
+    }
+    values.zones = zones
+    console.log('values', values)
     this.props.editCamFunctions(focusedCam, values)
   }
 
@@ -80,10 +98,11 @@ class EditFunctions extends Component {
   }
 }
 
-const mapStateToProps = ({ cameras }) => ({
+const mapStateToProps = ({ cameras, drawZones }) => ({
   isFetching: cameras.isFetching,
   focusedCam: cameras.focusedCam,
   functions: cameras.currentCam.functions,
+  zoneOptions: drawZones.zoneOptions,
 })
 
 export default connect(

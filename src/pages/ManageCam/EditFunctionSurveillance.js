@@ -7,6 +7,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
+import FormSelectDrawZone from './components/draw_zone/draw_selected'
+
 const styles = theme => ({
   switchBase: {
     height: 20,
@@ -39,6 +41,10 @@ class EditFunctionSurveillance extends Component {
             <Typography>Giám sát thông minh (Cấu hình các vùng nhận dạng...)</Typography>
           </div>
         </ExpansionPanelSummary>
+
+        <ExpansionPanelDetails>
+          <FormSelectDrawZone />
+        </ExpansionPanelDetails>
       </ExpansionPanel>
     )
   }

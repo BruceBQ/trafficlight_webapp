@@ -13,6 +13,7 @@ import {
 } from '../../actions/action_camera'
 // import { MarkerCam } from '../../components/Marker'
 import MarkerCam from './MarkerCam'
+import DrawZone from './components/draw_zone'
 
 const styles = theme => ({
   root: {
@@ -56,13 +57,19 @@ class RightSite extends Component {
       cameras,
       newCamCoor,
       editCam,
-      activeStep
+      activeStep,
+      switchTab, 
+      tabValue
     } = this.props
     // if(activeStep === 2) {
     //   return (<Fragment>
     //     <img src="/snapshot_2.png" style={{height: '100%'}}/>
     //   </Fragment>)
     // }
+    if (activeStep === 2 || (switchTab === 1 && tabValue === 2)) {
+      // return <DrawingZone />
+      return <DrawZone />
+    }
     return (
       <Fragment>
         {siteState === 0 && (
@@ -121,7 +128,9 @@ const mapStateToProps = ({ cameras, manageCam, map }) => ({
     lat: cameras.addCamera.lat,
     lng: cameras.addCamera.lng,
   },
-  activeStep: cameras.addCamera.activeStep
+  activeStep: cameras.addCamera.activeStep,
+  tabValue: cameras.currentCam.tabValue,
+  switchTab: manageCam.tabValue,
 })
 
 export default connect(

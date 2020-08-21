@@ -71,6 +71,9 @@ class Function extends Component {
     addCamera.zones = zoneDrew
     addCamera.dimension = dimension
 
+    // localStorage.setItem("zoneDrew", JSON.stringify(zoneDrew))
+    console.log('zoneDrew', addCamera)
+
     this.props.resetZonesDrew()
     this.props.configCamFunctions(omit(addCamera, ['activeStep']))
   }
@@ -125,5 +128,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   backStep,
   configCamFunctions,
-  resetZonesDrew
+  resetZonesDrew,
 })(withStyles(styles)(Function))

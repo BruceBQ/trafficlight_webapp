@@ -2,31 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import * as d3 from 'd3'
-import { finishShape, addDimension, removeShape, shapeSelected, setupRatio, cancelDraw, resetZonesDrew } from 'actions/draw_zones/action_draw'
-import _ from 'lodash'
-
-const styles = {
-  root: {
-    width: '100%',
-    height: '100%',
-  },
-  rootCanvas: {
-    width: '100%',
-    height: '100%',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
-  },
-  button: {
-    cursor: 'pointer',
-    margin: 10,
-  },
-}
-
-
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
-import * as d3 from 'd3'
 
 import { finishShape, addDimension, removeShape, shapeSelected, setupRatio, cancelDraw, resetZonesDrew } from 'actions/draw_zones/action_draw'
 import _ from 'lodash'
@@ -35,6 +10,9 @@ const styles = {
   root: {
     width: '100%',
     height: '100%',
+    alignItems: 'center',    
+    display: 'flex',
+    margin: 'auto'
   },
   rootCanvas: {
     width: '100%',
@@ -972,7 +950,7 @@ class ShapeD3 extends Component {
     let nodeShape
     // let dataLocalStorage = JSON.parse(localStorage.getItem('dataShape')) || []
     let objArrow
-    if ((shapePoints.length === 2 && controlDraw.shape === 'polygon' && controlDrawDirect.direct === 'yes') || (shapePoints.length === 2 && controlDrawDirect.shape === 'polygon' && controlDrawDirect.direct === 'yes') ) {
+    if (shapePoints.length === 2 && controlDraw.shape === 'polygon' && controlDrawDirect.direct === 'yes') {
       let id = controlDrawDirect.id
       objArrow = {
         arrowLine: result,
@@ -1011,9 +989,6 @@ class ShapeD3 extends Component {
     }
 
     if (objArrow) {
-      console.log('objArrow', objArrow)
-      console.log('finishShape', dataShapePoints)
-
       dataShapePoints.map((data) => {
         if (data.id === objArrow.id) {
           data.arrowLine = objArrow.arrowLine

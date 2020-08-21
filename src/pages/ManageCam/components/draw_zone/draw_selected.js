@@ -148,7 +148,6 @@ class AddTypeZone extends Component {
   }
 
   onTagsChange = (values) => {
-    console.log(values)
     this.setState({
       tag: values,
     })
@@ -201,6 +200,11 @@ class AddTypeZone extends Component {
   render() {
     let { classes, controlDraw, controlDrawDirect, zoneOptions, shapeSelected } = this.props
     let { isButtonOpen, isAutocompleteOpen, tags, tag } = this.state
+
+    if(tags.length) {
+      tags = tags.map(tag => zoneOptions.find(zone => zone.id === tag.id))
+    }
+
     let zoneSelectOptions = zoneOptions.map((item) => {
       return {
         ...item,

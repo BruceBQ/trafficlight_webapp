@@ -58,7 +58,7 @@ class EditFunctionsForm extends Component {
             type="submit"
             color="primary"
             variant="contained"
-            disabled={isProcessing || !dirty}
+            // disabled={isProcessing || !dirty}
             // onClick={this.handleSubmit}
           >
             Lưu

@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 
 import { configCamParams } from '../../actions/action_camera'
+import { resetZonesDrew } from 'actions/draw_zones/action_draw'
 import AddCamParamsForm from './AddCamParamsForm'
 const styles = theme => ({
   root: {
@@ -24,6 +25,8 @@ class AddCamParams extends Component {
       resolution: values.resolution.value,
       quality: values.quality.value
     })
+
+    this.props.resetZonesDrew()
   }
 
   render() {
@@ -57,5 +60,6 @@ const mapStateToProps = ({ cameras }) => ({
 })
 
 export default connect(mapStateToProps, {
-  configCamParams
+  configCamParams,
+  resetZonesDrew
 })(withStyles(styles)(AddCamParams))

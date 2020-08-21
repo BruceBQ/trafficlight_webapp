@@ -255,6 +255,11 @@ const reducer_camera = (state = INITIAL_STATE, action) => {
           ...action.payload,
           activeStep: state.addCamera.activeStep + 1,
         },
+        editCam: {
+          connection: {},
+          params: {},
+          functions: {},
+        },
         errors: {},
       }
 
@@ -404,6 +409,7 @@ const reducer_camera = (state = INITIAL_STATE, action) => {
         isFetching: false,
         currentCam: {
           ...state.currentCam,
+          tabValue: 0,
           connection: action.payload,
         },
         editCam: {
@@ -423,6 +429,10 @@ const reducer_camera = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: true,
+        currentCam: {
+          ...state.currentCam,
+          tabValue: 1,
+        }
       }
 
     case types.FETCH_CAM_PARAMS_SUCCESS:
@@ -559,6 +569,7 @@ const reducer_camera = (state = INITIAL_STATE, action) => {
         isFetching: false,
         currentCam: {
           ...state.currentCam,
+          tabValue: 2,
           functions: action.payload,
         },
         editCam: {

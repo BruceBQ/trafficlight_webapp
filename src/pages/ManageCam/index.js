@@ -53,7 +53,8 @@ const styles = (theme) => ({
   right: {
     // width: 'calc(100% - 400px)',
     flexGrow: 1,
-    height: '100%'
+    height: '100%',
+    background: "black"
   },
   wrapper: {
     display: 'flex',
