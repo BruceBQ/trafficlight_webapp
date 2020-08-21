@@ -1,0 +1,70 @@
+export default theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 51,
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 20,
+    boxShadow: '0 0 35px 0 rgba(154,161,171,.3)',
+    borderBottom: '1px solid #ddd',
+    background: '#fff',
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  logoWrapper: {
+    height: 50,
+    // padding: '10px 10px 10px 10px',
+    textAlign: 'center',
+    borderRight: '2px solid #ccc',
+  },
+  logoImage: {
+    padding: 10,
+    height: '100%',
+    // paddingBottom: 1,
+    cursor: 'pointer',
+  },
+  titlePage: {
+    marginRight: 'auto',
+    display: 'flex',
+    padding: '6px 24px',
+    fontSize: 16,
+    fontWeight: 500,
+    alignItems: 'center',
+  },
+  nav: {
+    display: 'flex',
+    alignItems: 'center',
+    // paddingRight: 18,
+    // paddingLeft: 18,
+  },
+  smallIcon: {
+    fontSize: 20,
+  },
+  rightControls: {
+    display: 'flex',
+    borderLeft: '1px solid #ccc',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 10,
+    paddingLeft: 10,
+  },
+  leftControls: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginRight: 10,
+    // height: '100%',
+  },
+  followList: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: '100%',
+    alignItems: 'center',
+  },
+  iconButton: {
+    height: 44,
+  },
+})
