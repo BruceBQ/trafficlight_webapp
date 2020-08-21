@@ -221,6 +221,8 @@ class AddTypeZone extends Component {
       shapeSelected = shapeSelected.replace(/__|_/gi, '')
     }
 
+    console.log('tags', tags)
+
     return (
       <div className={classes.root}>
         {tags.length
@@ -287,24 +289,6 @@ class AddTypeZone extends Component {
 
         {isAutocompleteOpen ? (
           <div className={classes.boxAdd}>
-            {/* <Autocomplete
-              multiple
-              className={classes.customAutoCom}
-              disableCloseOnSelect
-              id="combo-box-demo"
-              size="small"
-              options={zoneOptions}
-              filterOptions={(options, params) => {
-                for (let i = 0; i < tags.length; i++) {
-                  options = options.filter((item) => item.type !== tags[i].type)
-                }
-                return options
-              }}
-              onChange={this.onTagsChange}
-              getOptionLabel={(option) => option.title}
-              value={tag}
-              renderInput={(params) => <TextField {...params} label="Vùng nhận dạng" variant="outlined" />}
-            /> */}
             <Select
               classes={classes}
               components={{

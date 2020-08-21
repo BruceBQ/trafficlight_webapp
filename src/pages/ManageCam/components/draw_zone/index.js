@@ -950,15 +950,27 @@ class ShapeD3 extends Component {
     let nodeShape
     // let dataLocalStorage = JSON.parse(localStorage.getItem('dataShape')) || []
     let objArrow
-    if (shapePoints.length === 2 && controlDraw.shape === 'polygon' && controlDrawDirect.direct === 'yes') {
-      let id = controlDrawDirect.id
-      objArrow = {
-        arrowLine: result,
-        arrow: resultExact,
-        id,
-      }
 
+    if(controlDraw.shape) {
+      if (shapePoints.length === 2 && controlDraw.shape === 'polygon' && controlDrawDirect.direct === 'yes') {
+        let id = controlDrawDirect.id
+        objArrow = {
+          arrowLine: result,
+          arrow: resultExact,
+          id,
+        }
+      }
+    }else {
+      if (shapePoints.length === 2 && controlDrawDirect.shape === 'polygon' && controlDrawDirect.direct === 'yes') {
+        let id = controlDrawDirect.id
+        objArrow = {
+          arrowLine: result,
+          arrow: resultExact,
+          id,
+        }
+      }
     }
+    
 
     if (shapePoints.length === 2 && controlDraw.shape === 'rectangle') {
       let newShapePoints = [
